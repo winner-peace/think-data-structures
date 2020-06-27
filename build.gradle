@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'org.springframework.boot' version '2.3.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+}
+
+group 'com.winnerpeace'
+version '0.0.1'
+
+ext {
+    javaVersion = JavaVersion.VERSION_14
+}
+
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+
+test {
+    useJUnitPlatform()
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation group: 'org.jfree', name: 'jfreechart', version: '1.5.0'
+    implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
+
+    implementation 'org.jetbrains:annotations:19.0.0'
+}
