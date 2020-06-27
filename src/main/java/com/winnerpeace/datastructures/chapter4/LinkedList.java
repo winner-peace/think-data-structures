@@ -185,7 +185,7 @@ public class LinkedList<E> implements List<E> {
         }
 
         var prevNode = head;
-        for (int i = 0, end = index - PREV_NODE_TERM; i < end; i++) {
+        for (int i = FIRST_INDEX, end = index - PREV_NODE_TERM; i < end; i++) {
             prevNode = prevNode.getNext()
                     .orElseThrow(IndexOutOfBoundsException::new);
         }
@@ -248,7 +248,7 @@ public class LinkedList<E> implements List<E> {
         final var array = new Object[size];
 
         var node = head;
-        for (int i = 0; i < size; i++) {
+        for (int i = FIRST_INDEX; i < size; i++) {
             array[i] = node.getValue();
             node = node.getNext().orElse(null);
         }

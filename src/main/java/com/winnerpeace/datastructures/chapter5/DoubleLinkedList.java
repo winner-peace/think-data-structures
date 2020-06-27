@@ -254,7 +254,7 @@ public class DoubleLinkedList<E> implements List<E> {
         final var array = new Object[size];
 
         var node = head;
-        for (int i = 0; i < size; i++) {
+        for (int i = FIRST_INDEX; i < size; i++) {
             array[i] = node.getValue();
             node = node.getNext().orElse(null);
         }
