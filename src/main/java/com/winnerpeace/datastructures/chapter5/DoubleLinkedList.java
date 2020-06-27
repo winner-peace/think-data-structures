@@ -74,7 +74,7 @@ public class DoubleLinkedList<E> implements List<E> {
         if (index < FIRST_INDEX || size < index) {
             throw new IndexOutOfBoundsException();
         }
-        if (isEmpty() || size() == index) {
+        if (isEmpty() || size == index) {
             add(element);
             return element;
         }
@@ -93,7 +93,7 @@ public class DoubleLinkedList<E> implements List<E> {
         if (index == FIRST_INDEX) {
             return Optional.of(head);
         }
-        if (index == size() - INDEX_TERM) {
+        if (index == size - INDEX_TERM) {
             return Optional.of(tail);
         }
 
@@ -106,7 +106,7 @@ public class DoubleLinkedList<E> implements List<E> {
             }
         } else {
             node = tail;
-            for (int i = FIRST_INDEX, end = size() - INDEX_TERM - index; i < end; i++) {
+            for (int i = FIRST_INDEX, end = size - INDEX_TERM - index; i < end; i++) {
                 node = node.getPrev()
                         .orElseThrow(IndexOutOfBoundsException::new);
             }
