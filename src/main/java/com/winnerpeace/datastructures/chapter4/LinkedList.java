@@ -176,11 +176,11 @@ public class LinkedList<E> implements List<E> {
             if (head.hasNext()) {
                 head = node.getNext()
                         .orElseThrow(IndexOutOfBoundsException::new);
+                --size;
             } else {
                 clear();
             }
 
-            --size;
             return node.getValue();
         }
 
