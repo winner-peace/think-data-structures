@@ -1,4 +1,4 @@
-package com.winnerpeace.datastrucrues.chapter4;
+package com.winnerpeace.datastructures.chapter4;
 
 import org.jetbrains.annotations.Nullable;
 

@@ -1,6 +1,6 @@
-package com.winnerpeace.datastrucrues.chapter4;
+package com.winnerpeace.datastructures.chapter4;
 
-import com.winnerpeace.datastrucrues.List;
+import com.winnerpeace.datastructures.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

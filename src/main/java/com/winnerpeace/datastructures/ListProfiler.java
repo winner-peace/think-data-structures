@@ -1,8 +1,8 @@
-package com.winnerpeace.datastrucrues;
+package com.winnerpeace.datastructures;
 
-import com.winnerpeace.datastrucrues.chapter3.ArrayList;
-import com.winnerpeace.datastrucrues.chapter4.LinkedList;
-import com.winnerpeace.datastrucrues.chapter5.DoubleLinkedList;
+import com.winnerpeace.datastructures.chapter3.ArrayList;
+import com.winnerpeace.datastructures.chapter4.LinkedList;
+import com.winnerpeace.datastructures.chapter5.DoubleLinkedList;
 import org.jfree.data.xy.XYSeries;
 
 import java.util.function.Supplier;
@@ -46,7 +46,7 @@ class ListProfiler {
         }
 
         private void remove() {
-            final var timeable = new com.winnerpeace.datastrucrues.Profiler.Timeable() {
+            final var timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -67,7 +67,7 @@ class ListProfiler {
         }
 
         private void removeStartPosition() {
-            final var timeable = new com.winnerpeace.datastrucrues.Profiler.Timeable() {
+            final var timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -88,7 +88,7 @@ class ListProfiler {
         }
 
         private void removeEndPosition() {
-            final var timeable = new com.winnerpeace.datastrucrues.Profiler.Timeable() {
+            final var timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -109,7 +109,7 @@ class ListProfiler {
         }
 
         private void indexOf() {
-            final var timeable = new com.winnerpeace.datastrucrues.Profiler.Timeable() {
+            final var timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -130,7 +130,7 @@ class ListProfiler {
         }
 
         private void lastIndexOf() {
-            final var timeable = new com.winnerpeace.datastrucrues.Profiler.Timeable() {
+            final var timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -148,7 +148,7 @@ class ListProfiler {
         }
 
         private void isEmpty() {
-            final var timeable = new com.winnerpeace.datastrucrues.Profiler.Timeable() {
+            final var timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -166,7 +166,7 @@ class ListProfiler {
         }
 
         private void size() {
-            final var timeable = new com.winnerpeace.datastrucrues.Profiler.Timeable() {
+            final var timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -184,7 +184,7 @@ class ListProfiler {
         }
 
         private void addStartPosition() {
-            final var timeable = new com.winnerpeace.datastrucrues.Profiler.Timeable() {
+            final var timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -202,7 +202,7 @@ class ListProfiler {
         }
 
         private void addEndPosition() {
-            final var timeable = new com.winnerpeace.datastrucrues.Profiler.Timeable() {
+            final var timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -220,7 +220,7 @@ class ListProfiler {
         }
 
         private void add() {
-            final var timeable = new com.winnerpeace.datastrucrues.Profiler.Timeable() {
+            final var timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -238,7 +238,7 @@ class ListProfiler {
         }
 
         private void get() {
-            final var timeable = new com.winnerpeace.datastrucrues.Profiler.Timeable() {
+            final var timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -259,7 +259,7 @@ class ListProfiler {
         }
 
         private void set() {
-            final var timeable = new com.winnerpeace.datastrucrues.Profiler.Timeable() {
+            final var timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -283,8 +283,8 @@ class ListProfiler {
     /**
      * Runs the profiles and displays results.
      */
-    private static void runProfiler(String title, com.winnerpeace.datastrucrues.Profiler.Timeable timeable) {
-        com.winnerpeace.datastrucrues.Profiler profiler = new com.winnerpeace.datastrucrues.Profiler(title, timeable);
+    private static void runProfiler(String title, Profiler.Timeable timeable) {
+        Profiler profiler = new Profiler(title, timeable);
         XYSeries series = profiler.timingLoop(start, endMillis);
         profiler.plotResults(series);
     }

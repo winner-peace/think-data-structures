@@ -1,7 +1,6 @@
-package com.winnerpeace.datastrucrues.chapter5;
+package com.winnerpeace.datastructures.chapter3;
 
-import com.winnerpeace.datastrucrues.List;
-import com.winnerpeace.datastrucrues.chapter3.ArrayList;
+import com.winnerpeace.datastructures.List;
 import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,17 +14,17 @@ import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-@DisplayName("DoubleLinkedList: ")
-class DoubleLinkedListTest {
+@DisplayName("ArrayList: ")
+class ArrayListTest {
 
     private static final int FIRST_INDEX = 0;
     private static final int RANDOM_BOUND = 100;
 
-    private DoubleLinkedList<Long> list;
+    private ArrayList<Long> list;
 
     @BeforeEach
     void setUp() {
-        list = new DoubleLinkedList<>();
+        list = new ArrayList<>();
     }
 
     @DisplayName("add: ")
@@ -164,10 +163,6 @@ class DoubleLinkedListTest {
             final var dump = insertDump();
             final var addValue = random();
             final var lastIndex = dump.size();
-
-            System.out.println(dump);
-            System.out.println(list);
-            System.out.println(lastIndex);
 
             // when / then
             list.set(lastIndex, addValue);

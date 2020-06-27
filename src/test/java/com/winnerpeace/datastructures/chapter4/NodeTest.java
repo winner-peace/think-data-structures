@@ -1,4 +1,4 @@
-package com.winnerpeace.datastrucrues.chapter5;
+package com.winnerpeace.datastructures.chapter4;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -121,17 +121,33 @@ class NodeTest {
         assertThat(foundNext).isNotPresent();
     }
 
-    @DisplayName("노드를 변경한다.")
+    @DisplayName("마지막 위치에 노드를 생성한다.")
     @Test
-    void change() {
+    void append() {
+        // given
+        final var value = 100;
+        final var node = Node.first(value);
+        final var nextNode = node.createNext(value);
+
+        // when
+        final var appendNode = node.append(value);
+
+        // then
+        assertThat(nextNode.getNext()).isPresent()
+                .hasValue(appendNode);
+    }
+
+    @DisplayName("다음 노드를 변경한다.")
+    @Test
+    void changeNext() {
         // given
         final var value = 100;
         final var changeValue = 300;
         final var firstNode = Node.first(value);
-        final var targetNode = firstNode.createNext(200);
+        firstNode.createNext(200);
 
         // when
-        targetNode.change(changeValue);
+        firstNode.changeNext(changeValue);
 
         // then
         assertThat(firstNode.getNext()).isPresent()
@@ -141,32 +157,48 @@ class NodeTest {
 
     @DisplayName("다음 노드를 변경하면 기존 노드를 반환한.")
     @Test
-    void changeReturnOriginalNode() {
+    void changeNextReturnOriginalNode() {
         // given
         final var value = 100;
         final var firstNode = Node.first(value);
-        final var targetNode = firstNode.createNext(200);
+        final var expected = firstNode.createNext(200);
 
         // when
-        final var changedNode = targetNode.change(300);
+        final var changeTargetNode = firstNode.changeNext(300);
 
         // then
-        assertThat(changedNode).isEqualTo(targetNode);
+        assertThat(changeTargetNode).isEqualTo(expected);
     }
 
-    @DisplayName("노드를 제거한다.")
+    @DisplayName("다음 노드를 제거한다.")
     @Test
-    void remove() {
+    void removeNext() {
         // given
         final var value = 100;
         final var nextValue = 200;
         final var firstNode = Node.first(value);
-        final var targetNode = firstNode.createNext(nextValue);
+        firstNode.createNext(nextValue);
 
         // when
-        targetNode.remove();
+        final var removeTargetNode = firstNode.removeNext();
 
         // then
-        assertThat(firstNode.getNext()).isNotPresent();
+        assertThat(removeTargetNode).isPresent()
+                .map(Node::getValue)
+                .hasValue(nextValue);
+    }
+
+    @DisplayName("다음 노드가 없는 상태에서 제거하면 빈값을 반환한다.")
+    @Test
+    void removeNextNotExists() {
+        // given
+        final var value = 100;
+        final var firstNode = Node.first(value);
+
+        // when
+        final var removeTargetNode = firstNode.removeNext();
+
+        // then
+        assertThat(removeTargetNode).isNotPresent();
     }
 }

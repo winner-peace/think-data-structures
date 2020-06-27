@@ -1,6 +1,6 @@
-package com.winnerpeace.datastrucrues.chapter3;
+package com.winnerpeace.datastructures.chapter3;
 
-import com.winnerpeace.datastrucrues.List;
+import com.winnerpeace.datastructures.List;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;

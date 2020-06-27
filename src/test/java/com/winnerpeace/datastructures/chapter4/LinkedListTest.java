@@ -1,6 +1,7 @@
-package com.winnerpeace.datastrucrues;
+package com.winnerpeace.datastructures.chapter4;
 
-import com.winnerpeace.datastrucrues.chapter3.ArrayList;
+import com.winnerpeace.datastructures.List;
+import com.winnerpeace.datastructures.chapter3.ArrayList;
 import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,18 +15,17 @@ import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-public abstract class ListTest {
+@DisplayName("DoubleLinkedList: ")
+class LinkedListTest {
 
     private static final int FIRST_INDEX = 0;
     private static final int RANDOM_BOUND = 100;
 
-    private List<Long> list;
-
-    public abstract List<Long> getList();
+    private LinkedList<Long> list;
 
     @BeforeEach
     void setUp() {
-        list = getList();
+        list = new LinkedList<>();
     }
 
     @DisplayName("add: ")
@@ -233,43 +233,15 @@ public abstract class ListTest {
     @Nested
     class LastIndexOf {
 
-        @DisplayName("값의 인덱스 조회 시 값이 없다면 " + List.ELEMENT_NOT_FOUND + "을 반환한다.")
-        @Test
-        void lastIndexOfNotFound() {
-            // when
-            final var foundIndex = list.lastIndexOf(random());
-
-            // then
-            assertThat(foundIndex).isEqualTo(List.ELEMENT_NOT_FOUND);
-        }
-
-        @DisplayName("첫 인덱스의 값을 조회한다.")
-        @Test
-        void lastIndexOfFirst() {
-            // given
-            final var value = random();
-            list.add(value);
-
-            // when
-            final var foundIndex = list.lastIndexOf(value);
-
-            // then
-            assertThat(foundIndex).isEqualTo(FIRST_INDEX);
-        }
-
-        @DisplayName("값의 인덱스를 조회한다.")
+        @DisplayName("구현되지 않았다.")
         @Test
         void lastIndexOf() {
-            // given
-            final var dump = insertDump();
-            final var index = randomIndex();
-            final var value = dump.get(index);
-
             // when
-            final var foundIndex = list.lastIndexOf(value);
+            final ThrowableAssert.ThrowingCallable action = () -> list.lastIndexOf(random());
 
             // then
-            assertThat(index).isEqualTo(foundIndex);
+            assertThatExceptionOfType(UnsupportedOperationException.class)
+                    .isThrownBy(action);
         }
     }
 
