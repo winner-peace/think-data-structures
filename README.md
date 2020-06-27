@@ -49,7 +49,7 @@
 
 ### 2주차
 
-#### [Chapter 3 - ArrayList 클래스](./src/main/java/com/winnerpeace/datastrucrures/chapter3/ArrayList.java)
+#### [Chapter 3 - ArrayList 클래스](https://github.com/winner-peace/src/main/java/com/winnerpeace/datastrucrures/chapter3/ArrayList.java)
 
 ##### 3.1 - MyArrayList 메서드 분류하기
 
@@ -79,21 +79,21 @@
 
 - **책에선 이러한 상황을 주의하라고 했지만 그럴 필요가 있을까?**
 
-#### [Chapter 4 - LinkedList 클래스](./src/main/java/com/winnerpeace/datastrucrures/chapter4/LinkedList.java)
+#### [Chapter 4 - LinkedList 클래스](https://github.com/winner-peace/src/main/java/com/winnerpeace/datastrucrures/chapter4/LinkedList.java)
 
 ##### 4.1 - MyLinkedList 메서드 분류하기
 
 ##### 4.2 - MyArrayList와 MyLinkedList 비교하기
 
-##### 4.3 - [프로파일](./src/main/java/com/winnerpeace/datastrucrures/Profiler.java)
+##### 4.3 - [프로파일](https://github.com/winner-peace//src/main/java/com/winnerpeace/datastrucrures/Profiler.java)
 
 ##### 4.4 - 결과 해석하기
 
 ##### 4.5 - 실습4
 
-#### [Chapter 5 - 이중 연결 클래스](./src/main/java/com/winnerpeace/datastrucrures/chapter5/DoubleLinkedList.java)
+#### [Chapter 5 - 이중 연결 클래스](https://github.com/winner-peace/src/main/java/com/winnerpeace/datastrucrures/chapter5/DoubleLinkedList.java)
 
-##### 5.1 - [성능 프로파일 결과](./src/main/java/com/winnerpeace/datastrucrures/ListProfiler.java)
+##### 5.1 - [성능 프로파일 결과](https://github.com/winner-peace/src/main/java/com/winnerpeace/datastrucrures/ListProfiler.java)
 
 ##### 5.2 - LinkedList 메서드 프로파일하기
 
