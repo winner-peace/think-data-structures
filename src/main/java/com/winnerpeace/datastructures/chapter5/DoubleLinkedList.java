@@ -12,8 +12,6 @@ import static java.util.Objects.isNull;
 
 public class DoubleLinkedList<E> implements List<E> {
 
-    private static final int INDEX_TERM = 1;
-
     @Nullable
     private Node<E> head;
 

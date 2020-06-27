@@ -50,7 +50,7 @@ public final class ArrayList<E> implements List<E> {
 
         // Note: System.arraycopy(elements, index, elements, index + 1, size - index);
         for (var i = index; i < size; i++) {
-            elements[i + 1] = elements[i];
+            elements[i + INDEX_TERM] = elements[i];
         }
         elements[index] = element;
 
@@ -128,7 +128,7 @@ public final class ArrayList<E> implements List<E> {
 
     @Override
     public int lastIndexOf(final E element) {
-        for (int i = size - 1; i >= FIRST_INDEX; i--) {
+        for (int i = size - INDEX_TERM; i >= FIRST_INDEX; i--) {
             if (Objects.equals(element, elements[i])) {
                 return i;
             }
@@ -162,7 +162,7 @@ public final class ArrayList<E> implements List<E> {
     public E remove(final int index) {
         final var element = get(index);
         for (int i = index, end = size - index; i <= end; i++) {
-            elements[i] = elements[i + 1];
+            elements[i] = elements[i + INDEX_TERM];
         }
 
         --size;

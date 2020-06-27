@@ -3,6 +3,7 @@ package com.winnerpeace.datastructures;
 public interface List<E> extends Iterable<E> {
 
     int ELEMENT_NOT_FOUND = -1;
+    int INDEX_TERM = 1;
     int EMPTY_SIZE = 0;
     int FIRST_INDEX = 0;
 
