@@ -33,7 +33,7 @@ public final class Node<E> {
 
     public E getValue() {
         @SuppressWarnings("unchecked")
-        final var castedValue = (E) value;
+        final E castedValue = (E) value;
         return castedValue;
     }
 
@@ -57,7 +57,7 @@ public final class Node<E> {
     public Node<E> append(final E element) {
         if (hasNext()) {
             @SuppressWarnings("ConstantConditions")
-            final var appendNode = next.append(element);
+            final Node<E> appendNode = next.append(element);
             return appendNode;
         }
 
@@ -65,8 +65,8 @@ public final class Node<E> {
     }
 
     public Node<E> insert(final E element) {
-        final var nextNode = this.next;
-        final var insertNode = createNext(element);
+        final Node<E> nextNode = this.next;
+        final Node<E> insertNode = createNext(element);
         this.next = insertNode;
         insertNode.next = nextNode;
 
@@ -80,11 +80,11 @@ public final class Node<E> {
             return empty();
         }
 
-        final var targetNode = next;
+        final Node<E> targetNode = next;
         if (targetNode.isLast()) {
             createNext(element);
         } else {
-            final var targetNextNode = targetNode.getNext()
+            final Node<E> targetNextNode = targetNode.getNext()
                     .orElseThrow(IndexOutOfBoundsException::new);
 
             next = createNext(element);
@@ -95,7 +95,7 @@ public final class Node<E> {
     }
 
     public Optional<Node<E>> changeNext(final Node<E> changeNext) {
-        final var originalNext = this.next;
+        final Node<E> originalNext = this.next;
         this.next = changeNext;
 
         return Optional.ofNullable(originalNext);
@@ -107,7 +107,7 @@ public final class Node<E> {
             return Optional.empty();
         }
 
-        final var targetNode = next;
+        final Node<E> targetNode = next;
         next = targetNode.getNext()
                 .orElse(null);
 

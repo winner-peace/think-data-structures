@@ -36,8 +36,8 @@ public class DoubleLinkedList<E> implements List<E> {
 
     @Override
     public boolean addAll(final List<E> elements) {
-        var isAdded = false;
-        for (final var element : elements) {
+        boolean isAdded = false;
+        for (final E element : elements) {
             isAdded |= add(element);
         }
 
@@ -100,7 +100,7 @@ public class DoubleLinkedList<E> implements List<E> {
         Node<E> node;
         if (size / 2 > index) {
             node = head;
-            for (var i = FIRST_INDEX; i < index; i++) {
+            for (int i = FIRST_INDEX; i < index; i++) {
                 node = node.getNext()
                         .orElseThrow(IndexOutOfBoundsException::new);
             }
@@ -122,7 +122,7 @@ public class DoubleLinkedList<E> implements List<E> {
             return ELEMENT_NOT_FOUND;
         }
 
-        var node = head;
+        Node<E> node = head;
         for (int i = FIRST_INDEX; i < size; i++) {
             if (node.equalsValue(element)) {
                 return i;
@@ -142,7 +142,7 @@ public class DoubleLinkedList<E> implements List<E> {
             return ELEMENT_NOT_FOUND;
         }
 
-        var node = tail;
+        Node<E> node = tail;
         for (int i = size - INDEX_TERM; i >= FIRST_INDEX; i--) {
             if (node.equalsValue(element)) {
                 return i;
@@ -167,7 +167,7 @@ public class DoubleLinkedList<E> implements List<E> {
 
     @Override
     public boolean remove(final E element) {
-        final var index = indexOf(element);
+        final int index = indexOf(element);
         if (index == ELEMENT_NOT_FOUND) {
             return false;
         }
@@ -178,8 +178,8 @@ public class DoubleLinkedList<E> implements List<E> {
 
     @Override
     public boolean removeAll(final List<E> elements) {
-        var isRemoved = false;
-        for (final var element : elements) {
+        boolean isRemoved = false;
+        for (final E element : elements) {
             isRemoved |= remove(element);
         }
 
@@ -192,7 +192,7 @@ public class DoubleLinkedList<E> implements List<E> {
             throw new IndexOutOfBoundsException();
         }
 
-        final var removedValue = getNode(index)
+        final E removedValue = getNode(index)
                 .orElseThrow(IndexOutOfBoundsException::new)
                 .remove()
                 .getValue();
@@ -238,7 +238,7 @@ public class DoubleLinkedList<E> implements List<E> {
 
         @Override
         public E next() {
-            final var value = node.getValue();
+            final E value = node.getValue();
             node = node.getNext()
                     .orElse(null);
 
@@ -249,9 +249,9 @@ public class DoubleLinkedList<E> implements List<E> {
     @SuppressWarnings("ConstantConditions")
     @Override
     public String toString() {
-        final var array = new Object[size];
+        final Object[] array = new Object[size];
 
-        var node = head;
+        Node<E> node = head;
         for (int i = FIRST_INDEX; i < size; i++) {
             array[i] = node.getValue();
             node = node.getNext().orElse(null);

@@ -9,7 +9,7 @@ group 'com.winnerpeace'
 version '0.0.1'
 
 ext {
-    javaVersion = JavaVersion.VERSION_14
+    javaVersion = JavaVersion.VERSION_1_8
 }
 
 sourceCompatibility = javaVersion

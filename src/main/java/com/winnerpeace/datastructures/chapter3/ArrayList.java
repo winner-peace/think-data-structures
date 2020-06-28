@@ -49,7 +49,7 @@ public final class ArrayList<E> implements List<E> {
         grow();
 
         // Note: System.arraycopy(elements, index, elements, index + 1, size - index);
-        for (var i = index; i < size; i++) {
+        for (int i = index; i < size; i++) {
             elements[i + INDEX_TERM] = elements[i];
         }
         elements[index] = element;
@@ -61,8 +61,8 @@ public final class ArrayList<E> implements List<E> {
 
     @Override
     public boolean addAll(final List<E> elements) {
-        var isAdded = false;
-        for (final var element : elements) {
+        boolean isAdded = false;
+        for (final E element : elements) {
             isAdded |= add(element);
         }
 
@@ -75,15 +75,15 @@ public final class ArrayList<E> implements List<E> {
 
     @SuppressWarnings({"ManualArrayCopy", "SameParameterValue"})
     private void grow(final int addElementSize) {
-        var growExpectSize = size + addElementSize;
+        int growExpectSize = size + addElementSize;
         while (growExpectSize < elements.length) {
             growExpectSize <<= 1;
         }
 
-        final var newElements = new Object[growExpectSize];
+        final Object[] newElements = new Object[growExpectSize];
 
-        // Note: System.arraycopy(elements, FIRST_INDEX, newElements, FIRST_INDEX, size);
-        for (var i = FIRST_INDEX; i < size; i++) {
+//         Note: System.arraycopy(elements, FIRST_INDEX, newElements, FIRST_INDEX, size);
+        for (int i = FIRST_INDEX; i < size; i++) {
             newElements[i] = elements[i];
         }
         elements = newElements;
@@ -95,7 +95,7 @@ public final class ArrayList<E> implements List<E> {
             throw new IndexOutOfBoundsException();
         }
 
-        @SuppressWarnings("unchecked") final var element = (E) elements[index];
+        @SuppressWarnings("unchecked") final E element = (E) elements[index];
 
         return element;
     }
@@ -109,7 +109,7 @@ public final class ArrayList<E> implements List<E> {
 
         grow();
 
-        @SuppressWarnings("unchecked") final var originalElement = (E) elements[index];
+        @SuppressWarnings("unchecked") final E originalElement = (E) elements[index];
         elements[index] = element;
 
         return originalElement;
@@ -117,7 +117,7 @@ public final class ArrayList<E> implements List<E> {
 
     @Override
     public int indexOf(final E element) {
-        for (var i = FIRST_INDEX; i < size; i++) {
+        for (int i = FIRST_INDEX; i < size; i++) {
             if (Objects.equals(element, elements[i])) {
                 return i;
             }
@@ -149,7 +149,7 @@ public final class ArrayList<E> implements List<E> {
 
     @Override
     public boolean remove(final E element) {
-        final var index = indexOf(element);
+        final int index = indexOf(element);
         if (index == ELEMENT_NOT_FOUND) {
             return false;
         }
@@ -160,7 +160,7 @@ public final class ArrayList<E> implements List<E> {
 
     @Override
     public E remove(final int index) {
-        final var element = get(index);
+        final E element = get(index);
         for (int i = index, end = size - index; i <= end; i++) {
             elements[i] = elements[i + INDEX_TERM];
         }
@@ -171,8 +171,8 @@ public final class ArrayList<E> implements List<E> {
 
     @Override
     public boolean removeAll(final List<E> elements) {
-        var isRemoved = false;
-        for (final var element : elements) {
+        boolean isRemoved = false;
+        for (final E element : elements) {
             isRemoved |= remove(element);
         }
 

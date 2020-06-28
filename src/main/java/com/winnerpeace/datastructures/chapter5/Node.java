@@ -28,7 +28,7 @@ public final class Node<E> {
 
     public E getValue() {
         @SuppressWarnings("unchecked")
-        final var castedValue = (E) value;
+        final E castedValue = (E) value;
         return castedValue;
     }
 
@@ -55,8 +55,8 @@ public final class Node<E> {
     }
 
     public Node<E> insert(final E element) {
-        final var nextNode = this.next;
-        final var insertNode = createNext(element);
+        final Node<E> nextNode = this.next;
+        final Node<E> insertNode = createNext(element);
         this.next = insertNode;
         insertNode.next = nextNode;
 
@@ -64,7 +64,7 @@ public final class Node<E> {
     }
 
     public Node<E> change(final E element) {
-        final var changedNode = new Node<>(element);
+        final Node<E> changedNode = new Node<>(element);
 
         getNext().ifPresent(changedNode::changeNext);
         changedNode.getNext()

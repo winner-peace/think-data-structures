@@ -21,6 +21,7 @@ public class LinkedList<E> implements List<E> {
 
     @SuppressWarnings("ConstantConditions")
     @Override
+
     public boolean add(final E element) {
         if (isEmpty()) {
             head = Node.first(element);
@@ -34,8 +35,8 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public boolean addAll(final List<E> elements) {
-        var isAdded = false;
-        for (final var element : elements) {
+        boolean isAdded = false;
+        for (final E element : elements) {
             isAdded |= add(element);
         }
 
@@ -78,7 +79,7 @@ public class LinkedList<E> implements List<E> {
             return element;
         }
         if (index == FIRST_INDEX) {
-            final var node = head;
+            final Node<E> node = head;
 
             head = Node.first(element);
             node.getNext()
@@ -86,6 +87,8 @@ public class LinkedList<E> implements List<E> {
 
             return node.getValue();
         }
+
+
 
         return getNode(index - PREV_NODE_TERM)
                 .orElseThrow(IndexOutOfBoundsException::new)
@@ -99,7 +102,7 @@ public class LinkedList<E> implements List<E> {
             return Optional.empty();
         }
 
-        var node = head;
+        Node<E> node = head;
         for (int i = FIRST_INDEX; i < index; i++) {
             node = node.getNext()
                     .orElseThrow(IndexOutOfBoundsException::new);
@@ -115,7 +118,7 @@ public class LinkedList<E> implements List<E> {
             return ELEMENT_NOT_FOUND;
         }
 
-        var node = head;
+        Node<E> node = head;
         for (int i = FIRST_INDEX; i < size; i++) {
             if (node.equalsValue(element)) {
                 return i;
@@ -145,7 +148,7 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public boolean remove(final E element) {
-        final var index = indexOf(element);
+        final int index = indexOf(element);
         if (index == ELEMENT_NOT_FOUND) {
             return false;
         }
@@ -156,8 +159,8 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public boolean removeAll(final List<E> elements) {
-        var isRemoved = false;
-        for (final var element : elements) {
+        boolean isRemoved = false;
+        for (final E element : elements) {
             isRemoved |= remove(element);
         }
 
@@ -171,7 +174,7 @@ public class LinkedList<E> implements List<E> {
             throw new IndexOutOfBoundsException();
         }
         if (index == FIRST_INDEX) {
-            final var node = head;
+            final Node<E> node = head;
 
             if (head.hasNext()) {
                 head = node.getNext()
@@ -184,13 +187,13 @@ public class LinkedList<E> implements List<E> {
             return node.getValue();
         }
 
-        var prevNode = head;
+        Node<E> prevNode = head;
         for (int i = FIRST_INDEX, end = index - PREV_NODE_TERM; i < end; i++) {
             prevNode = prevNode.getNext()
                     .orElseThrow(IndexOutOfBoundsException::new);
         }
 
-        final var removedValue = prevNode.removeNext()
+        final E removedValue = prevNode.removeNext()
                 .map(Node::getValue)
                 .orElseThrow(IndexOutOfBoundsException::new);
 
@@ -234,7 +237,7 @@ public class LinkedList<E> implements List<E> {
 
         @Override
         public E next() {
-            final var value = node.getValue();
+            final E value = node.getValue();
             node = node.getNext()
                     .orElse(null);
 
@@ -245,9 +248,9 @@ public class LinkedList<E> implements List<E> {
     @SuppressWarnings("ConstantConditions")
     @Override
     public String toString() {
-        final var array = new Object[size];
+        final Object[] array = new Object[size];
 
-        var node = head;
+        Node<E> node = head;
         for (int i = FIRST_INDEX; i < size; i++) {
             array[i] = node.getValue();
             node = node.getNext().orElse(null);

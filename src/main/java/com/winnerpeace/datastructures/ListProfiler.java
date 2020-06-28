@@ -14,24 +14,24 @@ class ListProfiler {
     private static final int endMillis = 400;
 
     public static void main(final String... args) {
-        final var arrayListProfiler = new Profile("ArrayList", ArrayList::new);
-        final var linkedListProfiler = new Profile("LinkedList", LinkedList::new);
-        final var doubleLinkedListProfiler = new Profile("DoubleKinkedList", DoubleLinkedList::new);
+        final Profile arrayListProfiler = new Profile("ArrayList", ArrayList::new);
+        final Profile linkedListProfiler = new Profile("LinkedList", LinkedList::new);
+        final Profile doubleLinkedListProfiler = new Profile("DoubleKinkedList", DoubleLinkedList::new);
 
-        final var profiler = arrayListProfiler;
+        final Profile profiler = arrayListProfiler;
 
-        profiler.add();
-        profiler.addStartPosition();
-        profiler.addEndPosition();
-        profiler.get();
-        profiler.set();
-        profiler.indexOf();
-        profiler.lastIndexOf();
-        profiler.isEmpty();
-        profiler.size();
-        profiler.remove();
-        profiler.removeStartPosition();
-        profiler.removeEndPosition();
+//        profiler.add();
+//        profiler.addStartPosition();
+//        profiler.addEndPosition();
+//        profiler.get();
+//        profiler.set();
+//        profiler.indexOf();
+//        profiler.lastIndexOf();
+//        profiler.isEmpty();
+//        profiler.size();
+//        profiler.remove();
+//        profiler.removeStartPosition();
+//        profiler.removeEndPosition();
     }
 
     private static class Profile {
@@ -46,7 +46,7 @@ class ListProfiler {
         }
 
         private void remove() {
-            final var timeable = new Profiler.Timeable() {
+            final Profiler.Timeable timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -67,7 +67,7 @@ class ListProfiler {
         }
 
         private void removeStartPosition() {
-            final var timeable = new Profiler.Timeable() {
+            final Profiler.Timeable timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -88,7 +88,7 @@ class ListProfiler {
         }
 
         private void removeEndPosition() {
-            final var timeable = new Profiler.Timeable() {
+            final Profiler.Timeable timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -109,7 +109,7 @@ class ListProfiler {
         }
 
         private void indexOf() {
-            final var timeable = new Profiler.Timeable() {
+            final Profiler.Timeable timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -130,7 +130,7 @@ class ListProfiler {
         }
 
         private void lastIndexOf() {
-            final var timeable = new Profiler.Timeable() {
+            final Profiler.Timeable timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -148,7 +148,7 @@ class ListProfiler {
         }
 
         private void isEmpty() {
-            final var timeable = new Profiler.Timeable() {
+            final Profiler.Timeable timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -166,7 +166,7 @@ class ListProfiler {
         }
 
         private void size() {
-            final var timeable = new Profiler.Timeable() {
+            final Profiler.Timeable timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -184,7 +184,7 @@ class ListProfiler {
         }
 
         private void addStartPosition() {
-            final var timeable = new Profiler.Timeable() {
+            final Profiler.Timeable timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -202,7 +202,7 @@ class ListProfiler {
         }
 
         private void addEndPosition() {
-            final var timeable = new Profiler.Timeable() {
+            final Profiler.Timeable timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -220,7 +220,7 @@ class ListProfiler {
         }
 
         private void add() {
-            final var timeable = new Profiler.Timeable() {
+            final Profiler.Timeable timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -238,7 +238,7 @@ class ListProfiler {
         }
 
         private void get() {
-            final var timeable = new Profiler.Timeable() {
+            final Profiler.Timeable timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {
@@ -259,7 +259,7 @@ class ListProfiler {
         }
 
         private void set() {
-            final var timeable = new Profiler.Timeable() {
+            final Profiler.Timeable timeable = new Profiler.Timeable() {
                 List<String> list;
 
                 public void setup(int n) {

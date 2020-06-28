@@ -3,6 +3,8 @@ package com.winnerpeace.datastructures.chapter4;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class NodeTest {
@@ -11,10 +13,10 @@ class NodeTest {
     @Test
     void first() {
         // given
-        final var value = 100;
+        final int value = 100;
 
         // when
-        final var node = Node.first(value);
+        final Node<Integer> node = Node.first(value);
 
         // then
         assertThat(node).isNotNull();
@@ -24,11 +26,11 @@ class NodeTest {
     @Test
     void getValue() {
         // given
-        final var value = 100;
-        final var node = Node.first(value);
+        final int value = 100;
+        final Node<Integer> node = Node.first(value);
 
         // when
-        final var getValue = node.getValue();
+        final int getValue = node.getValue();
 
         // then
         assertThat(getValue).isEqualTo(value);
@@ -38,11 +40,11 @@ class NodeTest {
     @Test
     void equalsValue() {
         // given
-        final var value = 100;
-        final var node = Node.first(value);
+        final int value = 100;
+        final Node<Integer> node = Node.first(value);
 
         // when
-        final var equalsValue = node.equalsValue(value);
+        final boolean equalsValue = node.equalsValue(value);
 
         // then
         assertThat(equalsValue).isTrue();
@@ -52,11 +54,11 @@ class NodeTest {
     @Test
     void next() {
         // given
-        final var value = 100;
-        final var node = Node.first(value);
+        final int value = 100;
+        final Node<Integer> node = Node.first(value);
 
         // when
-        final var nextNode = node.createNext(value);
+        final Node<Integer> nextNode = node.createNext(value);
 
         // then
         assertThat(nextNode.getValue()).isEqualTo(value);
@@ -66,12 +68,12 @@ class NodeTest {
     @Test
     void hasNextExists() {
         // given
-        final var value = 100;
-        final var node = Node.first(value);
+        final int value = 100;
+        final Node<Integer> node = Node.first(value);
         node.createNext(value);
 
         // when
-        final var hasNext = node.hasNext();
+        final boolean hasNext = node.hasNext();
 
         // then
         assertThat(hasNext).isTrue();
@@ -81,11 +83,11 @@ class NodeTest {
     @Test
     void hasNextNonExists() {
         // given
-        final var value = 100;
-        final var node = Node.first(value);
+        final int value = 100;
+        final Node<Integer> node = Node.first(value);
 
         // when
-        final var hasNext = node.hasNext();
+        final boolean hasNext = node.hasNext();
 
         // then
         assertThat(hasNext).isFalse();
@@ -95,12 +97,12 @@ class NodeTest {
     @Test
     void getNextExists() {
         // given
-        final var value = 100;
-        final var node = Node.first(value);
-        final var nextNode = node.createNext(value);
+        final int value = 100;
+        final Node<Integer> node = Node.first(value);
+        final Node<Integer> nextNode = node.createNext(value);
 
         // when
-        final var foundNext = node.getNext();
+        final Optional<Node<Integer>> foundNext = node.getNext();
 
         // then
         assertThat(foundNext).isPresent()
@@ -111,11 +113,11 @@ class NodeTest {
     @Test
     void getNextNotExists() {
         // given
-        final var value = 100;
-        final var node = Node.first(value);
+        final int value = 100;
+        final Node<Integer> node = Node.first(value);
 
         // when
-        final var foundNext = node.getNext();
+        final Optional<Node<Integer>> foundNext = node.getNext();
 
         // then
         assertThat(foundNext).isNotPresent();
@@ -125,12 +127,12 @@ class NodeTest {
     @Test
     void append() {
         // given
-        final var value = 100;
-        final var node = Node.first(value);
-        final var nextNode = node.createNext(value);
+        final int value = 100;
+        final Node<Integer> node = Node.first(value);
+        final Node<Integer> nextNode = node.createNext(value);
 
         // when
-        final var appendNode = node.append(value);
+        final Node<Integer> appendNode = node.append(value);
 
         // then
         assertThat(nextNode.getNext()).isPresent()
@@ -141,9 +143,9 @@ class NodeTest {
     @Test
     void changeNext() {
         // given
-        final var value = 100;
-        final var changeValue = 300;
-        final var firstNode = Node.first(value);
+        final int value = 100;
+        final int changeValue = 300;
+        final Node<Integer> firstNode = Node.first(value);
         firstNode.createNext(200);
 
         // when
@@ -159,12 +161,12 @@ class NodeTest {
     @Test
     void changeNextReturnOriginalNode() {
         // given
-        final var value = 100;
-        final var firstNode = Node.first(value);
-        final var expected = firstNode.createNext(200);
+        final int value = 100;
+        final Node<Integer> firstNode = Node.first(value);
+        final Node<Integer> expected = firstNode.createNext(200);
 
         // when
-        final var changeTargetNode = firstNode.changeNext(300);
+        final Node<Integer> changeTargetNode = firstNode.changeNext(300);
 
         // then
         assertThat(changeTargetNode).isEqualTo(expected);
@@ -174,13 +176,13 @@ class NodeTest {
     @Test
     void removeNext() {
         // given
-        final var value = 100;
-        final var nextValue = 200;
-        final var firstNode = Node.first(value);
+        final int value = 100;
+        final int nextValue = 200;
+        final Node<Integer> firstNode = Node.first(value);
         firstNode.createNext(nextValue);
 
         // when
-        final var removeTargetNode = firstNode.removeNext();
+        final Optional<Node<Integer>> removeTargetNode = firstNode.removeNext();
 
         // then
         assertThat(removeTargetNode).isPresent()
@@ -192,11 +194,11 @@ class NodeTest {
     @Test
     void removeNextNotExists() {
         // given
-        final var value = 100;
-        final var firstNode = Node.first(value);
+        final int value = 100;
+        final Node<Integer> firstNode = Node.first(value);
 
         // when
-        final var removeTargetNode = firstNode.removeNext();
+        final Optional<Node<Integer>> removeTargetNode = firstNode.removeNext();
 
         // then
         assertThat(removeTargetNode).isNotPresent();

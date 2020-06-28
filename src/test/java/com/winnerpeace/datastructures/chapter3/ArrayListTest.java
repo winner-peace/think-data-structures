@@ -35,7 +35,7 @@ class ArrayListTest {
         @Test
         void add() {
             // when
-            final var isAdded = list.add(random());
+            final boolean isAdded = list.add(random());
 
             // then
             assertThat(isAdded).isTrue();
@@ -45,7 +45,7 @@ class ArrayListTest {
         @Test
         void addIndex() {
             // when
-            final var isAdded = list.add(list.size(), random());
+            final boolean isAdded = list.add(list.size(), random());
 
             // then
             assertThat(isAdded).isTrue();
@@ -66,12 +66,12 @@ class ArrayListTest {
         @Test
         void addAll() {
             // given
-            final var dump = insertDump();
-            final var values = new ArrayList<Long>();
+            final java.util.List<Long> dump = insertDump();
+            final List<Long> values = new ArrayList<>();
             dump.forEach(values::add);
 
             // when
-            final var isAdded = list.addAll(values);
+            final boolean isAdded = list.addAll(values);
 
             // then
             assertThat(isAdded).isTrue();
@@ -86,11 +86,11 @@ class ArrayListTest {
         @Test
         void getFirstIndex() {
             // given
-            final var value = random();
+            final long value = random();
             list.add(value);
 
             // when
-            final var getValue = list.get(FIRST_INDEX);
+            final long getValue = list.get(FIRST_INDEX);
 
             // then
             assertThat(getValue).isEqualTo(value);
@@ -100,12 +100,12 @@ class ArrayListTest {
         @Test
         void get() {
             // given
-            final var dump = insertDump();
-            final var foundIndex = randomIndex();
-            final var expected = dump.get(foundIndex);
+            final java.util.List<Long> dump = insertDump();
+            final int foundIndex = randomIndex();
+            final long expected = dump.get(foundIndex);
 
             // when
-            final var getValue = list.get(foundIndex);
+            final long getValue = list.get(foundIndex);
 
             // then
             assertThat(getValue).isEqualTo(expected);
@@ -115,7 +115,7 @@ class ArrayListTest {
         @Test
         void getIndexOut() {
             // given
-            final var value = random();
+            final long value = random();
             list.add(value);
 
             // when
@@ -135,7 +135,7 @@ class ArrayListTest {
         @Test
         void setFirstIndex() {
             // given
-            final var addValue = random();
+            final long addValue = random();
 
             // when / then
             list.set(FIRST_INDEX, addValue);
@@ -145,12 +145,12 @@ class ArrayListTest {
         @Test
         void setWillReturnOriginalValue() {
             // given
-            final var dump = insertDump();
-            final var foundIndex = randomIndex();
-            final var expected = dump.get(foundIndex);
+            final java.util.List<Long> dump = insertDump();
+            final int foundIndex = randomIndex();
+            final long expected = dump.get(foundIndex);
 
             // when
-            final var originalValue = list.set(foundIndex, random());
+            final long originalValue = list.set(foundIndex, random());
 
             // then
             assertThat(originalValue).isEqualTo(expected);
@@ -160,9 +160,9 @@ class ArrayListTest {
         @Test
         void setLastIndex() {
             // given
-            final var dump = insertDump();
-            final var addValue = random();
-            final var lastIndex = dump.size();
+            final java.util.List<Long> dump = insertDump();
+            final long addValue = random();
+            final int lastIndex = dump.size();
 
             // when / then
             list.set(lastIndex, addValue);
@@ -172,8 +172,8 @@ class ArrayListTest {
         @Test
         void setIndexOut() {
             // given
-            final var dump = insertDump();
-            final var lastIndex = dump.size();
+            final java.util.List<Long> dump = insertDump();
+            final int lastIndex = dump.size();
 
             // when
             final ThrowableAssert.ThrowingCallable action = () -> list.set(lastIndex + 1, random());
@@ -192,7 +192,7 @@ class ArrayListTest {
         @Test
         void indexOfNotFound() {
             // when
-            final var foundIndex = list.indexOf(random());
+            final int foundIndex = list.indexOf(random());
 
             // then
             assertThat(foundIndex).isEqualTo(List.ELEMENT_NOT_FOUND);
@@ -202,11 +202,11 @@ class ArrayListTest {
         @Test
         void indexOfFirst() {
             // given
-            final var value = random();
+            final long value = random();
             list.add(value);
 
             // when
-            final var foundIndex = list.indexOf(value);
+            final int foundIndex = list.indexOf(value);
 
             // then
             assertThat(foundIndex).isEqualTo(FIRST_INDEX);
@@ -216,12 +216,12 @@ class ArrayListTest {
         @Test
         void indexOf() {
             // given
-            final var dump = insertDump();
-            final var index = randomIndex();
-            final var value = dump.get(index);
+            final java.util.List<Long> dump = insertDump();
+            final int index = randomIndex();
+            final long value = dump.get(index);
 
             // when
-            final var foundIndex = list.indexOf(value);
+            final int foundIndex = list.indexOf(value);
 
             // then
             assertThat(index).isEqualTo(foundIndex);
@@ -236,7 +236,7 @@ class ArrayListTest {
         @Test
         void lastIndexOfNotFound() {
             // when
-            final var foundIndex = list.lastIndexOf(random());
+            final int foundIndex = list.lastIndexOf(random());
 
             // then
             assertThat(foundIndex).isEqualTo(List.ELEMENT_NOT_FOUND);
@@ -246,11 +246,11 @@ class ArrayListTest {
         @Test
         void lastIndexOfFirst() {
             // given
-            final var value = random();
+            final long value = random();
             list.add(value);
 
             // when
-            final var foundIndex = list.lastIndexOf(value);
+            final int foundIndex = list.lastIndexOf(value);
 
             // then
             assertThat(foundIndex).isEqualTo(FIRST_INDEX);
@@ -260,12 +260,12 @@ class ArrayListTest {
         @Test
         void lastIndexOf() {
             // given
-            final var dump = insertDump();
-            final var index = randomIndex();
-            final var value = dump.get(index);
+            final java.util.List<Long> dump = insertDump();
+            final int index = randomIndex();
+            final long value = dump.get(index);
 
             // when
-            final var foundIndex = list.lastIndexOf(value);
+            final int foundIndex = list.lastIndexOf(value);
 
             // then
             assertThat(index).isEqualTo(foundIndex);
@@ -280,7 +280,7 @@ class ArrayListTest {
         @Test
         void isEmpty() {
             // when
-            final var isEmpty = list.isEmpty();
+            final boolean isEmpty = list.isEmpty();
 
             // then
             assertThat(isEmpty).isTrue();
@@ -293,7 +293,7 @@ class ArrayListTest {
             insertDump();
 
             // when
-            final var isEmpty = list.isEmpty();
+            final boolean isEmpty = list.isEmpty();
 
             // then
             assertThat(isEmpty).isFalse();
@@ -308,7 +308,7 @@ class ArrayListTest {
         @Test
         void defaultSize() {
             // when
-            final var size = list.size();
+            final int size = list.size();
 
             // then
             assertThat(size).isEqualTo(List.EMPTY_SIZE);
@@ -318,11 +318,11 @@ class ArrayListTest {
         @Test
         void size() {
             // given
-            final var dump = insertDump();
-            final var expected = dump.size();
+            final java.util.List<Long> dump = insertDump();
+            final int expected = dump.size();
 
             // when
-            final var size = list.size();
+            final int size = list.size();
 
             // then
             assertThat(size).isEqualTo(expected);
@@ -335,9 +335,9 @@ class ArrayListTest {
             insertDump();
 
             // when
-            final var size = list.size();
+            final int size = list.size();
             list.add(random());
-            final var expected = size + 1;
+            final int expected = size + 1;
 
             // then
             assertThat(list.size()).isEqualTo(expected);
@@ -347,12 +347,12 @@ class ArrayListTest {
         @Test
         void decrementSize() {
             // given
-            final var dump = insertDump();
+            final java.util.List<Long> dump = insertDump();
 
             // when
-            final var size = list.size();
+            final int size = list.size();
             list.remove(dump.get(FIRST_INDEX));
-            final var expected = size - 1;
+            final int expected = size - 1;
 
             // then
             assertThat(list.size()).isEqualTo(expected);
@@ -367,11 +367,11 @@ class ArrayListTest {
         @Test
         void removeByValue() {
             // given
-            final var value = random();
+            final long value = random();
             list.add(value);
 
             // when
-            final var isRemoved = list.remove(value);
+            final boolean isRemoved = list.remove(value);
 
             // then
             assertThat(isRemoved).isTrue();
@@ -381,12 +381,12 @@ class ArrayListTest {
         @Test
         void removeAllSuccessByValue() {
             // given
-            final var dump = insertDump();
-            final var values = new ArrayList<Long>();
+            final java.util.List<Long> dump = insertDump();
+            final List<Long> values = new ArrayList<>();
             dump.forEach(values::add);
 
             // when
-            final var isRemoved = list.removeAll(values);
+            final boolean isRemoved = list.removeAll(values);
 
             // then
             assertThat(isRemoved).isTrue();
@@ -397,10 +397,10 @@ class ArrayListTest {
         void removeAllFailByValue() {
             // given
             insertDump();
-            final var values = new ArrayList<Long>();
+            final List<Long> values = new ArrayList<>();
 
             // when
-            final var isRemoved = list.removeAll(values);
+            final boolean isRemoved = list.removeAll(values);
 
             // then
             assertThat(isRemoved).isFalse();
@@ -410,10 +410,10 @@ class ArrayListTest {
         @Test
         void removeByValueNotExists() {
             // given
-            final var value = random();
+            final long value = random();
 
             // when
-            final var isRemoved = list.remove(value);
+            final boolean isRemoved = list.remove(value);
 
             // then
             assertThat(isRemoved).isFalse();
@@ -422,12 +422,12 @@ class ArrayListTest {
         @DisplayName("특정 위치에 값을 제거한다.")
         @Test
         void removeByIndex() {
-            final var dump = insertDump();
-            final var index = randomIndex();
-            final var expected = dump.get(index);
+            final java.util.List<Long> dump = insertDump();
+            final int index = randomIndex();
+            final long expected = dump.get(index);
 
             // when
-            final var removeValue = list.remove(index);
+            final long removeValue = list.remove(index);
 
             // then
             assertThat(removeValue).isEqualTo(expected);
@@ -436,7 +436,7 @@ class ArrayListTest {
         @DisplayName("범위를 넘어가는 위치에 값을 제거하면 예외처리 한다.")
         @Test
         void removeByIndexOut() {
-            final var index = randomInt();
+            final int index = randomInt();
 
             // when
             final ThrowableAssert.ThrowingCallable action = () -> list.remove(index);
@@ -455,12 +455,12 @@ class ArrayListTest {
         @Test
         void contains() {
             // given
-            final var dump = insertDump();
-            final var index = randomIndex();
-            final var value = dump.get(index);
+            final java.util.List<Long> dump = insertDump();
+            final int index = randomIndex();
+            final long value = dump.get(index);
 
             // when
-            final var isContains = list.contains(value);
+            final boolean isContains = list.contains(value);
 
             // then
             assertThat(isContains).isTrue();
@@ -470,10 +470,10 @@ class ArrayListTest {
         @Test
         void notContains() {
             // given
-            final var value = random();
+            final long value = random();
 
             // when
-            final var isContains = list.contains(value);
+            final boolean isContains = list.contains(value);
 
             // then
             assertThat(isContains).isFalse();
@@ -520,7 +520,7 @@ class ArrayListTest {
     }
 
     private int randomIndex(final int end) {
-        final var indexTerm = 1;
+        final int indexTerm = 1;
         return randomInt(end) - indexTerm;
     }
 
