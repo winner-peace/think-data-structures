@@ -7,6 +7,10 @@ import lombok.Setter;
 import lombok.ToString;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.function.Consumer;
+
+import static java.util.Objects.nonNull;
+
 @ToString
 @EqualsAndHashCode
 @RequiredArgsConstructor(staticName = "root")
@@ -33,5 +37,17 @@ public final class Node<E> {
     public Node<E> right(final E value) {
         right = new Node<>(value);
         return right;
+    }
+
+    public void ifPresentLeft(Consumer<Node<E>> action) {
+        if (nonNull(left)) {
+            action.accept(left);
+        }
+    }
+
+    public void ifPresentRight(Consumer<Node<E>> action) {
+        if (nonNull(right)) {
+            action.accept(right);
+        }
     }
 }

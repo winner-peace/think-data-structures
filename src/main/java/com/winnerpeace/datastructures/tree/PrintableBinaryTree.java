@@ -1,11 +1,14 @@
 package com.winnerpeace.datastructures.tree;
 
+import com.winnerpeace.datastructures.queue.LinkedListQueue;
+import com.winnerpeace.datastructures.queue.Queue;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import org.jetbrains.annotations.Nullable;
 
 import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 
 @ToString
 @EqualsAndHashCode
@@ -55,5 +58,23 @@ public final class PrintableBinaryTree<E> implements BinaryTree<E> {
         postOrder(node.getLeft());
         postOrder(node.getRight());
         System.out.println(node.getValue());
+    }
+
+    public void levelOrder() {
+        if (isNull(root)) {
+            return;
+        }
+
+        final Queue<Node<E>> nodes = new LinkedListQueue<>();
+
+        Node<E> node = root;
+        while (nonNull(node)) {
+            System.out.println(node.getValue());
+
+            node.ifPresentLeft(nodes::offer);
+            node.ifPresentRight(nodes::offer);
+
+            node = nodes.poll();
+        }
     }
 }

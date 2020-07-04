@@ -42,4 +42,10 @@ class PrintableBinaryTreeTest {
     void postOrder() {
         printableBinaryTree.postOrder();
     }
+
+    // 1-> 2 -> 3 -> 4 -> 5
+    @Test
+    void levelOrder() {
+        printableBinaryTree.levelOrder();
+    }
 }
