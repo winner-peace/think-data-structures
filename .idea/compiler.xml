@@ -11,6 +11,6 @@
         <module name="think-data-structures.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="14" />
+    <bytecodeTargetLevel target="1.8" />
   </component>
 </project>
