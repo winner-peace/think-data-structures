@@ -5,11 +5,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.EmptyStackException;
+import java.util.List;
 
 import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 
-@ToString // TODO
 @EqualsAndHashCode
 public final class NodeStack<E> implements Stack<E> {
 
@@ -55,6 +57,20 @@ public final class NodeStack<E> implements Stack<E> {
     @Override
     public void clear() {
         tail = null;
+    }
+
+    @Override
+    public String toString() {
+        if (isEmpty()) {
+            return "[]";
+        }
+
+        final List<E> values = new ArrayList<>();
+        for (Node<E> node = tail; nonNull(node); node = node.prev) {
+            values.add(node.value);
+        }
+
+        return values.toString();
     }
 
     @ToString
