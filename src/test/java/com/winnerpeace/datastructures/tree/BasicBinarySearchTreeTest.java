@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class UnbalancedBinarySearchTreeTest {
+class BasicBinarySearchTreeTest {
 
     private static final int START = 1;
     private static final int END = 10;
@@ -22,7 +22,7 @@ class UnbalancedBinarySearchTreeTest {
                 .boxed()
                 .collect(toList());
 
-        tree = UnbalancedBinarySearchTree.create(values);
+        tree = BasicBinarySearchTree.create(values);
     }
 
     @Test
@@ -38,5 +38,14 @@ class UnbalancedBinarySearchTreeTest {
     @Test
     void overExists() {
         assertThat(tree.exists(END + 1)).isFalse();
+    }
+
+    @Test
+    void insert() {
+        System.out.println(tree);
+
+        tree.insert(100);
+
+        System.out.println(tree);
     }
 }

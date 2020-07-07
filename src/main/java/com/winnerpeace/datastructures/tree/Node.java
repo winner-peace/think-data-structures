@@ -50,4 +50,20 @@ public final class Node<E> {
             action.accept(right);
         }
     }
+
+    public boolean matchKey(final int key) {
+        return value.hashCode() == key;
+    }
+
+    public boolean nonMatchKey(final int key) {
+        return !matchKey(key);
+    }
+
+    public boolean graterThanBy(final int key) {
+        return value.hashCode() > key;
+    }
+
+    public boolean lessThanBy(final int key) {
+        return value.hashCode() < key;
+    }
 }
