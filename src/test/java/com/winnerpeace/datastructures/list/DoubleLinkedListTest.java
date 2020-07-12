@@ -1,12 +1,12 @@
-package com.winnerpeace.datastructures.chapter3;
+package com.winnerpeace.datastructures.list;
 
-import com.winnerpeace.datastructures.List;
 import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.LongStream;
 
@@ -14,17 +14,17 @@ import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-@DisplayName("ArrayList: ")
-class ArrayListTest {
+@DisplayName("DoubleLinkedList: ")
+class DoubleLinkedListTest {
 
     private static final int FIRST_INDEX = 0;
     private static final int RANDOM_BOUND = 100;
 
-    private ArrayList<Long> list;
+    private DoubleLinkedList<Long> list;
 
     @BeforeEach
     void setUp() {
-        list = new ArrayList<>();
+        list = new DoubleLinkedList<>();
     }
 
     @DisplayName("add: ")
@@ -558,5 +558,172 @@ class ArrayListTest {
                 .peek(list::add)
                 .boxed()
                 .collect(toList());
+    }
+
+    @DisplayName("DoubleLinkedList.Node: ")
+    static class NodeTest {
+
+        @DisplayName("첫 값을 생성한다.")
+        @Test
+        void first() {
+            // given
+            final int value = 100;
+
+            // when
+            final DoubleLinkedList.Node<Integer> node = DoubleLinkedList.Node.first(value);
+
+            // then
+            assertThat(node).isNotNull();
+        }
+
+        @DisplayName("값을 가져온다.")
+        @Test
+        void getValue() {
+            // given
+            final int value = 100;
+            final DoubleLinkedList.Node<Integer> node = DoubleLinkedList.Node.first(value);
+
+            // when
+            final int getValue = node.getValue();
+
+            // then
+            assertThat(getValue).isEqualTo(value);
+        }
+
+        @DisplayName("값을 비교한다.")
+        @Test
+        void equalsValue() {
+            // given
+            final int value = 100;
+            final DoubleLinkedList.Node<Integer> node = DoubleLinkedList.Node.first(value);
+
+            // when
+            final boolean equalsValue = node.equalsValue(value);
+
+            // then
+            assertThat(equalsValue).isTrue();
+        }
+
+        @DisplayName("링크를 연결해여 노드를 생성한다.")
+        @Test
+        void next() {
+            // given
+            final int value = 100;
+            final DoubleLinkedList.Node<Integer> node = DoubleLinkedList.Node.first(value);
+
+            // when
+            final DoubleLinkedList.Node<Integer> nextNode = node.createNext(value);
+
+            // then
+            assertThat(nextNode.getValue()).isEqualTo(value);
+        }
+
+        @DisplayName("다음 노드가 존재한다.")
+        @Test
+        void hasNextExists() {
+            // given
+            final int value = 100;
+            final DoubleLinkedList.Node<Integer> node = DoubleLinkedList.Node.first(value);
+            node.createNext(value);
+
+            // when
+            final boolean hasNext = node.hasNext();
+
+            // then
+            assertThat(hasNext).isTrue();
+        }
+
+        @DisplayName("다음 노드가 존재하지 않는다.")
+        @Test
+        void hasNextNonExists() {
+            // given
+            final int value = 100;
+            final DoubleLinkedList.Node<Integer> node = DoubleLinkedList.Node.first(value);
+
+            // when
+            final boolean hasNext = node.hasNext();
+
+            // then
+            assertThat(hasNext).isFalse();
+        }
+
+        @DisplayName("다음 노드를 가져온다.")
+        @Test
+        void getNextExists() {
+            // given
+            final int value = 100;
+            final DoubleLinkedList.Node<Integer> node = DoubleLinkedList.Node.first(value);
+            final DoubleLinkedList.Node<Integer> nextNode = node.createNext(value);
+
+            // when
+            final Optional<DoubleLinkedList.Node<Integer>> foundNext = node.getNext();
+
+            // then
+            assertThat(foundNext).isPresent()
+                    .hasValue(nextNode);
+        }
+
+        @DisplayName("다음 노드가 없다면 가져오지 못한다.")
+        @Test
+        void getNextNotExists() {
+            // given
+            final int value = 100;
+            final DoubleLinkedList.Node<Integer> node = DoubleLinkedList.Node.first(value);
+
+            // when
+            final Optional<DoubleLinkedList.Node<Integer>> foundNext = node.getNext();
+
+            // then
+            assertThat(foundNext).isNotPresent();
+        }
+
+        @DisplayName("노드를 변경한다.")
+        @Test
+        void change() {
+            // given
+            final int value = 100;
+            final int changeValue = 300;
+            final DoubleLinkedList.Node<Integer> firstNode = DoubleLinkedList.Node.first(value);
+            final DoubleLinkedList.Node<Integer> targetNode = firstNode.createNext(200);
+
+            // when
+            targetNode.change(changeValue);
+
+            // then
+            assertThat(firstNode.getNext()).isPresent()
+                    .map(DoubleLinkedList.Node::getValue)
+                    .hasValue(changeValue);
+        }
+
+        @DisplayName("다음 노드를 변경하면 기존 노드를 반환한.")
+        @Test
+        void changeReturnOriginalNode() {
+            // given
+            final int value = 100;
+            final DoubleLinkedList.Node<Integer> firstNode = DoubleLinkedList.Node.first(value);
+            final DoubleLinkedList.Node<Integer> targetNode = firstNode.createNext(200);
+
+            // when
+            final DoubleLinkedList.Node<Integer> changedNode = targetNode.change(300);
+
+            // then
+            assertThat(changedNode).isEqualTo(targetNode);
+        }
+
+        @DisplayName("노드를 제거한다.")
+        @Test
+        void remove() {
+            // given
+            final int value = 100;
+            final int nextValue = 200;
+            final DoubleLinkedList.Node<Integer> firstNode = DoubleLinkedList.Node.first(value);
+            final DoubleLinkedList.Node<Integer> targetNode = firstNode.createNext(nextValue);
+
+            // when
+            targetNode.remove();
+
+            // then
+            assertThat(firstNode.getNext()).isNotPresent();
+        }
     }
 }

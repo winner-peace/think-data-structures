@@ -1,6 +1,5 @@
-package com.winnerpeace.datastructures;
+package com.winnerpeace.datastructures.list;
 
-import com.winnerpeace.datastructures.chapter3.ArrayList;
 import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,18 +13,17 @@ import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-public abstract class ListTest {
+@DisplayName("ArrayList: ")
+class ArrayListTest {
 
     private static final int FIRST_INDEX = 0;
     private static final int RANDOM_BOUND = 100;
 
-    private List<Long> list;
-
-    public abstract List<Long> getList();
+    private ArrayList<Long> list;
 
     @BeforeEach
     void setUp() {
-        list = getList();
+        list = new ArrayList<>();
     }
 
     @DisplayName("add: ")

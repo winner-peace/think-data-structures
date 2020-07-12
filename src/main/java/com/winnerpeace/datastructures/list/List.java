@@ -1,4 +1,4 @@
-package com.winnerpeace.datastructures;
+package com.winnerpeace.datastructures.list;
 
 public interface List<E> extends Iterable<E> {
 

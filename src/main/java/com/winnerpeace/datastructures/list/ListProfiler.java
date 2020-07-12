@@ -1,8 +1,6 @@
-package com.winnerpeace.datastructures;
+package com.winnerpeace.datastructures.list;
 
-import com.winnerpeace.datastructures.chapter3.ArrayList;
-import com.winnerpeace.datastructures.chapter4.LinkedList;
-import com.winnerpeace.datastructures.chapter5.DoubleLinkedList;
+import com.winnerpeace.datastructures.Profiler;
 import org.jfree.data.xy.XYSeries;
 
 import java.util.function.Supplier;
