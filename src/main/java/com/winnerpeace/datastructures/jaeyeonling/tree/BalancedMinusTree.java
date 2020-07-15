@@ -3,6 +3,7 @@ package com.winnerpeace.datastructures.jaeyeonling.tree;
 import lombok.Builder;
 import lombok.ToString;
 
+import static java.lang.System.arraycopy;
 import static java.lang.System.lineSeparator;
 import static java.util.Objects.isNull;
 import static java.util.Objects.requireNonNull;
@@ -150,8 +151,14 @@ public class BalancedMinusTree<K extends Comparable<K>, V> {
             }
         }
 
-        for (int i = node.childrenCount; i > count; i--) {
-            node.children[i] = node.children[i - 1];
+        if (node.childrenCount - count >= 0) {
+            arraycopy(
+                    node.children,
+                    count,
+                    node.children,
+                    count + 1,
+                    node.childrenCount - count
+            );
         }
 
         node.children[count] = entry;
@@ -170,9 +177,13 @@ public class BalancedMinusTree<K extends Comparable<K>, V> {
         final Node newNode = new Node(childrenCount);
         node.childrenCount = childrenCount;
 
-        for (int i = 0; i < childrenCount; i++) {
-            newNode.children[i] = node.children[childrenCount + i];
-        }
+        arraycopy(
+                node.children,
+                2,
+                newNode.children,
+                0,
+                childrenCount
+        );
 
         return newNode;
     }
