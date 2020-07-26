@@ -41,8 +41,7 @@ class RightQuickSortTest extends SortTest {
             }
         }
 
-        ++newPivot;
-        swap(values, newPivot, right);
+        swap(values, ++newPivot, right);
 
         return newPivot;
     }
