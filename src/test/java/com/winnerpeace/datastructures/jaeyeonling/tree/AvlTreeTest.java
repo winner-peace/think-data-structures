@@ -1,11 +1,13 @@
 package com.winnerpeace.datastructures.jaeyeonling.tree;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Disabled
 class AvlTreeTest {
 
     @Test
