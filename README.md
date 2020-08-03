@@ -8,13 +8,17 @@
 
 * **주제** : Java, 자료구조, 알고리즘
 
-* **기간** : 2020/06/21 ~ 2020/07/26(?)
+* **기간** : 2020/06/21 ~ 2020/08/02 (7주)
 
 * **스터디 시간** : 매주 일요일 10시 ~ 12시 (2시간)
 
-* **스터디 장소** : [골든스터디카페 신도림점](https://map.naver.com/v5/entry/place/1936405452?c=14124330.2800194,4510375.8614660,15,0,0,0,dh)
+* **스터디 장소** : 신도림, 용산, 신촌 인근 스터디룸
 
-
+* **스터디원** : 완료 3명 / 시작 6명 (50%)
+    - [jaeyeonling](/ohtaeg)
+    - [ohtaeg](/ohtaeg)
+    - [ChanhaPrk](/ChanhaPrk)
+     
 
 ### 1주차 - OT
 
@@ -50,7 +54,7 @@
 
 ### 2주차
 
-#### [Chapter 3 - ArrayList 클래스](https://github.com/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/chapter3/ArrayList.java)
+#### [Chapter 3 - ArrayList 클래스](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/list/ArrayList.java)
 
 ##### 3.1 - MyArrayList 메서드 분류하기
 
@@ -58,7 +62,7 @@
 
 - add 시 배열을 늘릴 때는 복사하는 과정이 있기 때문에 o(1)이 아닌 o(n)이지만 o(1)이라고 한다.
 
-- 그 이유는 [분할 상환 분석](https://github.com/winner-peace/think-data-structures/issues/3) 때문이다.
+- 그 이유는 [분할 상환 분석](/winner-peace/think-data-structures/issues/3) 때문이다.
 
 ##### 3.3 - 문제 크기
 
@@ -80,21 +84,21 @@
 
 - **책에선 이러한 상황을 주의하라고 했지만 그럴 필요가 있을까?**
 
-#### [Chapter 4 - LinkedList 클래스](https://github.com/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/chapter4/LinkedList.java)
+#### [Chapter 4 - LinkedList 클래스](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/list/LinkedList.java)
 
 ##### 4.1 - MyLinkedList 메서드 분류하기
 
 ##### 4.2 - MyArrayList와 MyLinkedList 비교하기
 
-##### 4.3 - [프로파일](https://github.com/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/Profiler.java)
+##### 4.3 - [프로파일](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/Profiler.java)
 
 ##### 4.4 - 결과 해석하기
 
 ##### 4.5 - 실습4
 
-#### [Chapter 5 - 이중 연결 클래스](https://github.com/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/chapter5/DoubleLinkedList.java)
+#### [Chapter 5 - 이중 연결 클래스](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/list/DoubleLinkedList.java)
 
-##### 5.1 - [성능 프로파일 결과](https://github.com/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/ListProfiler.java)
+##### 5.1 - [성능 프로파일 결과](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/list/ListProfiler.java)
 
 
 ##### 5.2 - LinkedList 메서드 프로파일하기
@@ -118,3 +122,74 @@
 | remove(일반적으로)  | n         | n          | n                |
 
 * 시간 복잡도도 자료구조 선택의 조건이 되지만 공간복잡도도 고려해야 한다.
+
+---
+
+> Chater 5까지 책으로 진행 후, 책이 스터디 방향과 적합하지 않아 자체 커리큘럼으로 진행 
+>
+> 자체 커리큘럼은 주요 자료구조와 주요 정렬을 본인의 생각대로 구현하거나 공부한 후 어떠한 특징을 가지는지 의견을 공유
+
+### 3주차
+
+#### [Queue](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/queue)
+- [ArrayCircularQueue](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/queue/circular/ArrayCircularQueue.java)
+- [ArrayListQueue](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/queue/ArrayListQueue.java)
+- [ArrayQueue](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/queue/ArrayQueue.java)
+- [LinkedListQueue](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/queue/LinkedListQueue.java)
+- [NodeQueue](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/queue/NodeQueue.java)
+
+#### [Deque](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/deque)
+- [LinkedListDeque](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/deque/LinkedListDeque.java)
+- [NodeDeque](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/deque/NodeDeque.java)
+
+#### [Stack](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/stack)
+- [ArrayListStack](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/stack/ArrayListStack.java)
+- [ArrayStack](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/stack/ArrayStack.java)
+- [LinkedListStack](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/stack/LinkedListStack.java)
+- [NodeStack](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/stack/NodeStack.java)
+
+### 4, 5주차
+
+#### Tree
+
+##### [재연링의 트리](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/tree)
+- [Binary Tree Order](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/tree/PrintableBinaryTree.java)
+- [Binary Search Tree](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/tree/BasicBinarySearchTree.java), [Binary Search Tree](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/tree/SimpleBinarySearchTree.java)
+- [B- Tree](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/tree/BalancedMinusTree.java)
+- [AVL Tree](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/tree/AvlTree.java)
+- [Red Black Tree](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/jaeyeonling/tree/RedBlackTree.java)
+
+##### [태태로의 트리](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/ohtaeg/tree)
+- [Tree](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/ohtaeg/tree/Tree.md)
+- [Binary Search Tree](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/ohtaeg/tree/BinarySearchTree.md)
+- [B- Tree](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/ohtaeg/tree/B-Tree.md)
+- [B+ Tree](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/ohtaeg/tree/B+Tree.md)
+- [AVL Tree](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/ohtaeg/tree/AVLTree.md)
+- [Red Black Tree](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/ohtaeg/tree/RedBlackTree.md)
+
+### 6주차
+
+#### [Hash](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/ohtaeg/hash/Hash.md)
+
+### 7주차
+
+#### Sort
+
+##### [재연링의 정렬](/winner-peace/think-data-structures/blob/master/src/test/java/com/winnerpeace/datastructures/jaeyeonling/sort)
+- [BubbleSort](/winner-peace/think-data-structures/blob/master/src/test/java/com/winnerpeace/datastructures/jaeyeonling/sort/BubbleSortTest.java)
+- [InsertionSort](/winner-peace/think-data-structures/blob/master/src/test/java/com/winnerpeace/datastructures/jaeyeonling/sort/InsertionSortTest.java)
+- [SelectionSort](/winner-peace/think-data-structures/blob/master/src/test/java/com/winnerpeace/datastructures/jaeyeonling/sort/SelectionSortTest.java)
+- [MergeSort](/winner-peace/think-data-structures/blob/master/src/test/java/com/winnerpeace/datastructures/jaeyeonling/sort/MergeSortTest.java)
+- [RightQuickSort](/winner-peace/think-data-structures/blob/master/src/test/java/com/winnerpeace/datastructures/jaeyeonling/sort/RightQuickSortTest.java)
+- [MiddleQuickSort](/winner-peace/think-data-structures/blob/master/src/test/java/com/winnerpeace/datastructures/jaeyeonling/sort/MiddleQuickSortTest.java)
+- [RandomQuickSort](/winner-peace/think-data-structures/blob/master/src/test/java/com/winnerpeace/datastructures/jaeyeonling/sort/RandomQuickSortTest.java)
+- [HeapSort](/winner-peace/think-data-structures/blob/master/src/test/java/com/winnerpeace/datastructures/jaeyeonling/sort/HeapSortTest.java)
+
+##### [태태로의 정렬](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/ohtaeg/sort)
+- [MergeSort](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/ohtaeg/sort/merge)
+    - [개념](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/ohtaeg/sort/merge/MergeSort.md)
+    - [구현](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/ohtaeg/sort/merge/Merge.java)
+
+- [QuickSort](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/ohtaeg/sort/quick)
+    - [개념](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/ohtaeg/sort/quick/QuickSort.md)
+    - [구현](/winner-peace/think-data-structures/blob/master/src/main/java/com/winnerpeace/datastructures/ohtaeg/sort/quick/Quick.java)
